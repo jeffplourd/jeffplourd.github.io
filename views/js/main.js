@@ -453,14 +453,12 @@ var resizePizzas = function(size) {
   function changePizzaSizes(size) {
     //Each time the resizePizzas function is called, we only need to perform the calculations for the
     //dx and newwidth variables once. So to increase speed, we should remove them from the for loop.
-
-    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[i], size);
+    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[0], size);
       console.log(dx);
-      var newwidth = (document.getElementsByClassName("randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      var newwidth = (document.getElementsByClassName("randomPizzaContainer")[0].offsetWidth + dx) + 'px';
       console.log(newwidth);
 
     for (var i = 0; i < document.getElementsByClassName("randomPizzaContainer").length; i++) {
-
       document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   }
