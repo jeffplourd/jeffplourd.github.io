@@ -502,7 +502,7 @@ function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
   //more efficient way is to use 'document.getElementByClass('class')' instead of "querySelectorAll"
-  var items = document.getElementByClassName('mover');
+  var items = document.getElementsByClassName('mover');
 
   //The scrollTop variable below only needs to be calculated once per call to 'updatePosition', so we should
   //take it out of the for loop.
