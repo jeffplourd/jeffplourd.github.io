@@ -451,9 +451,16 @@ var resizePizzas = function(size) {
   // Iterates through pizza elements on the page and changes their widths
   //I've observed that the 'querySelectorAll' is an inefficient way to traverse the DOM - 'getElementsByClass' would be a better fit.
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.getElementsByClassName("randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[i], size);
+    //Each time the resizePizzas function is called, we only need to perform the calculations for the
+    //dx and newwidth variables once. So to increase speed, we should remove them from the for loop.
+
+    var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[i], size);
+      console.log(dx);
       var newwidth = (document.getElementsByClassName("randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      console.log(newwidth);
+
+    for (var i = 0; i < document.getElementsByClassName("randomPizzaContainer").length; i++) {
+
       document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   }
