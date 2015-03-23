@@ -449,11 +449,12 @@ var resizePizzas = function(size) {
   }
 
   // Iterates through pizza elements on the page and changes their widths
+  //I've observed that the 'querySelectorAll' is an inefficient way to traverse the DOM - 'getElementsByClass' would be a better fit.
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    for (var i = 0; i < document.getElementsByClassName("randomPizzaContainer").length; i++) {
+      var dx = determineDx(document.getElementsByClassName("randomPizzaContainer")[i], size);
+      var newwidth = (document.getElementsByClassName("randomPizzaContainer")[i].offsetWidth + dx) + 'px';
+      document.getElementsByClassName("randomPizzaContainer")[i].style.width = newwidth;
     }
   }
 
@@ -515,9 +516,6 @@ function updatePositions() {
   }
 
   for (var i = 0; i < items.length; i++) {
-    //the code below should evaluate to one of five numbers, maybe we can just store those number in an outside array
-    //var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    //console.log(phase, document.body.scrollTop / 1250, (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase[i%5] + 'px';
     //set backface-visibility: hidden; in mover class
   }
