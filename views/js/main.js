@@ -501,14 +501,24 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
+  //more efficient way is to use 'document.getElementByClass('class')' instead of "querySelectorAll"
+  var items = document.getElementByClass('mover');
 
-  var items = document.querySelectorAll('.mover');
-  //more efficient way is to use 'document.getElementByClass('class')'
+  //The scrollTop variable below only needs to be calculated once per call to 'updatePosition', so we should
+  //take it out of the for loop.
+  var scrollTop = document.body.scrollTop / 1250;
+
+  //Instead of calculating the metrics for the left styling each time, we should do this once for each unique value.
+  var phase = [];
+  for(var i = 0; i < 5; i++) {
+    phase.push(Math.sin(scrollTop + (i % 5)));
+  }
+
   for (var i = 0; i < items.length; i++) {
     //the code below should evaluate to one of five numbers, maybe we can just store those number in an outside array
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    console.log(phase, document.body.scrollTop / 1250, (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    //var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    //console.log(phase, document.body.scrollTop / 1250, (i % 5));
+    items[i].style.left = items[i].basicLeft + 100 * phase[i%5] + 'px';
     //set backface-visibility: hidden; in mover class
   }
 
