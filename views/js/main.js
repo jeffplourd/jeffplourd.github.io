@@ -507,7 +507,7 @@ function updatePositions() {
   for (var i = 0; i < items.length; i++) {
     //the code below should evaluate to one of five numbers, maybe we can just store those number in an outside array
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
-    console.log(phase, document.body.scrollTop / 1250);
+    console.log(phase, document.body.scrollTop / 1250, (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
     //set backface-visibility: hidden; in mover class
   }
