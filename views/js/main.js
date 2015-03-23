@@ -503,9 +503,13 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
 
   var items = document.querySelectorAll('.mover');
+  //more efficient way is to use 'document.getElementByClass('class')'
   for (var i = 0; i < items.length; i++) {
+    //the code below should evaluate to one of five numbers, maybe we can just store those number in an outside array
     var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    console.log(phase, document.body.scrollTop / 1250);
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    //set backface-visibility: hidden; in mover class
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
