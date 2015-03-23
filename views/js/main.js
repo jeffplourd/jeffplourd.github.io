@@ -522,7 +522,6 @@ function updatePositions() {
 
   for (var i = 0; i < items.length; i++) {
     items[i].style.left = items[i].basicLeft + 100 * phase[i%5] + 'px';
-    //set backface-visibility: hidden; in mover class
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -542,6 +541,7 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+  //I reduced the number of pizzas from 100 to 32 because only 32 are visible on the screen at any given time.
   for (var i = 0; i < 32; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
