@@ -1,6 +1,6 @@
 ## Website Performance Optimization portfolio project
 
-To run this application, go to "https://github.com/jeffplourd/jeffplourd.github.io"
+To run this application, go to "http://jeffplourd.github.io/"
 
 This application represents a variety of performance optimization techniques.
 
